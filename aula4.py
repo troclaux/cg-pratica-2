@@ -78,8 +78,14 @@ class MeuApp(ShowBase):
         self.spot3.setTexture(tex,1)
         self.spot3.setPos(0,-2,0)
         self.spot3.reparentTo(self.render)
-   
-        
+
+        self.spot4 = self.loader.loadModel("carro.obj")
+        #tex = loader.loadTexture('spot_green.png')
+        self.spot4.setTexture(tex, 1)
+        self.spot4.setPos(0, -2, 0)
+        self.spot4.reparentTo(self.render)
+        self.spot4.setHpr(0, 90, 90)
+        #self.spot4.setScale(2, 2, 3)  # escalonamento X, Y, Z
 
     ##========== Método que define o movimento de camera ========== 
     def dollyZoomTask(self, tarefa):
