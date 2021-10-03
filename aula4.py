@@ -55,16 +55,16 @@ class MeuApp(ShowBase):
         self.bob = self.loader.loadModel("bob190k_tex.obj")
         tex = loader.loadTexture('bob_diffuse.png')
         self.bob.setTexture(tex,1)
-        self.bob.setScale(2, 2, 3) # escalonamento X, Y, Z 
-        #self.bob.setHpr(90,0,0) # rotacao em volta de Z, X, Y
-        self.bob.setPos(1,-7,0) # posicao (X,Y,Z)
+        self.bob.setScale(1, 1, 1.5) # escalonamento X, Y, Z 
+        self.bob.setHpr(180,0,0) # rotacao em volta de Z, X, Y
+        self.bob.setPos(0,3,0) # posicao (X,Y,Z)
         self.bob.reparentTo(self.render)
  
         self.spot1 = self.loader.loadModel("spot190k_tex.obj")
         tex = loader.loadTexture('spot_blue.png')
         self.spot1.setTexture(tex,1)
         self.spot1.setScale(1.2, 1.2, 1.2) 
-        self.spot1.setPos(-2,-4,0) 
+        self.spot1.setPos(-2,-2.5,0) 
         self.spot1.reparentTo(self.render)
 
         self.spot2 = self.loader.loadModel('spot190k_tex.obj')
@@ -82,7 +82,7 @@ class MeuApp(ShowBase):
         self.spot4 = self.loader.loadModel("carro.obj")
         #tex = loader.loadTexture('spot_green.png')
         self.spot4.setTexture(tex, 1)
-        self.spot4.setPos(0, 0, 0)
+        self.spot4.setPos(0, 0.5, 0)
         self.spot4.reparentTo(self.render)
         self.spot4.setHpr(0, 90, 90)
         #self.spot4.setScale(2, 2, 3)  # escalonamento X, Y, Z
@@ -109,7 +109,7 @@ class MeuApp(ShowBase):
         FOV = 40 + 10 * math.sin(tarefa.time)
         distance = largura/(2*math.tan(0.5*FOV/180*math.pi))
         self.camera.lookAt(0, -1, -3)
-        self.camera.setPos(0, distance + 4, 10)
+        self.camera.setPos(0, distance + 2, 10)
         base.camLens.setFov(FOV)
         return tarefa.cont
 
