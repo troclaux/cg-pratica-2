@@ -71,8 +71,9 @@ class MeuApp(ShowBase):
         self.spot2 = self.loader.loadModel('spot190k_tex.obj')
         tex = loader.loadTexture('spot_red.png')
         self.spot2.setTexture(tex,1)
-        self.spot2.setHpr(45, 0, 0)
-        self.spot2.setPos(3, 0, 0)
+        self.spot2.setScale(2, 2, 2)
+        self.spot2.setHpr(30, 0, 0)
+        self.spot2.setPos(3, -1, 0)
         self.spot2.reparentTo(self.render)
 
         self.spot3 = self.loader.loadModel('spot190k_tex.obj')        
@@ -98,7 +99,7 @@ class MeuApp(ShowBase):
         #self.shovel.setScale(2, 2, 3)  # escalonamento X, Y, Z
 
         self.lamp_post = self.loader.loadModel("lamp_post.obj")
-        #tex = loader.loadTexture('lamp_post_texture.png')
+        tex = loader.loadTexture('lamp_post_texture.png')
         self.lamp_post.setTexture(tex, 1)
         self.lamp_post.setPos(-3, 0.5, 0)
         self.lamp_post.reparentTo(self.render)
