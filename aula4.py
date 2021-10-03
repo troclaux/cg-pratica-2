@@ -93,7 +93,7 @@ class MeuApp(ShowBase):
         visão (FOV) de uma câmera enquando se aproxima com a câmera a um
         ponto da cena, e vice versa: diminui FOV enquanto se afasta de um
         ponto da cena. O método muda o FOV da câmero por ângulo 30 graus
-        cada 3 segundos.'''
+        cada 3 segundos.
         largura = 4
         #tarefa.time retorna o tempo que se passou em segundos, a funcao
         # math.cos é usada para criar um movimento periódico
@@ -101,6 +101,15 @@ class MeuApp(ShowBase):
         distance = largura/(2*math.tan(0.5*FOV/180*math.pi))        
         self.camera.lookAt(0,-1,1)
         self.camera.setPos(0, distance -1 , 0.75)
+        base.camLens.setFov(FOV)
+        return tarefa.cont'''
+        largura = 4
+        #tarefa.time retorna o tempo que se passou em segundos, a funcao
+        # math.cos é usada para criar um movimento periódico
+        FOV = 40 + 20 * math.sin(tarefa.time)
+        distance = largura/(2*math.tan(0.5*FOV/180*math.pi))
+        self.camera.lookAt(0, -1, 1)
+        self.camera.setPos(0, distance + 4, 5)
         base.camLens.setFov(FOV)
         return tarefa.cont
 
