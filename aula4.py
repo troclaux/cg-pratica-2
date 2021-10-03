@@ -64,19 +64,21 @@ class MeuApp(ShowBase):
         tex = loader.loadTexture('spot_blue.png')
         self.spot1.setTexture(tex,1)
         self.spot1.setScale(1.2, 1.2, 1.2) 
-        self.spot1.setPos(-2,-2.5,0) 
+        self.spot1.setHpr(77, 23, 111)
+        self.spot1.setPos(0, 0, 4)
         self.spot1.reparentTo(self.render)
 
         self.spot2 = self.loader.loadModel('spot190k_tex.obj')
         tex = loader.loadTexture('spot_red.png')
         self.spot2.setTexture(tex,1)
-        self.spot2.setPos(2,-3,0)
+        self.spot2.setHpr(45, 0, 0)
+        self.spot2.setPos(3, 0, 0)
         self.spot2.reparentTo(self.render)
 
         self.spot3 = self.loader.loadModel('spot190k_tex.obj')        
         tex = loader.loadTexture('spot_green.png')
         self.spot3.setTexture(tex,1)
-        self.spot3.setPos(0,-2,0)
+        self.spot3.setPos(-2,-2,0)
         self.spot3.reparentTo(self.render)
 
         self.spot4 = self.loader.loadModel("carro.obj")
@@ -86,6 +88,22 @@ class MeuApp(ShowBase):
         self.spot4.reparentTo(self.render)
         self.spot4.setHpr(0, 90, 90)
         #self.spot4.setScale(2, 2, 3)  # escalonamento X, Y, Z
+
+        self.shovel = self.loader.loadModel("shovel.obj")
+        tex = loader.loadTexture('shovel_texture.png')
+        self.shovel.setTexture(tex, 1)
+        self.shovel.setPos(1, 0.5, 2)
+        self.shovel.reparentTo(self.render)
+        self.shovel.setHpr(0, 0, 0)
+        #self.shovel.setScale(2, 2, 3)  # escalonamento X, Y, Z
+
+        self.lamp_post = self.loader.loadModel("lamp_post.obj")
+        #tex = loader.loadTexture('lamp_post_texture.png')
+        self.lamp_post.setTexture(tex, 1)
+        self.lamp_post.setPos(-3, 0.5, 0)
+        self.lamp_post.reparentTo(self.render)
+        self.lamp_post.setHpr(90, 90, 0)
+        self.lamp_post.setScale(0.5, 0.5, 0.5)  # escalonamento X, Y, Z
 
     ##========== Método que define o movimento de camera ========== 
     def dollyZoomTask(self, tarefa):
