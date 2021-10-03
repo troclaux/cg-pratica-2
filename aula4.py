@@ -82,7 +82,7 @@ class MeuApp(ShowBase):
         self.spot4 = self.loader.loadModel("carro.obj")
         #tex = loader.loadTexture('spot_green.png')
         self.spot4.setTexture(tex, 1)
-        self.spot4.setPos(0, -2, 0)
+        self.spot4.setPos(0, 0, 0)
         self.spot4.reparentTo(self.render)
         self.spot4.setHpr(0, 90, 90)
         #self.spot4.setScale(2, 2, 3)  # escalonamento X, Y, Z
@@ -106,10 +106,10 @@ class MeuApp(ShowBase):
         largura = 4
         #tarefa.time retorna o tempo que se passou em segundos, a funcao
         # math.cos é usada para criar um movimento periódico
-        FOV = 40 + 20 * math.sin(tarefa.time)
+        FOV = 40 + 10 * math.sin(tarefa.time)
         distance = largura/(2*math.tan(0.5*FOV/180*math.pi))
-        self.camera.lookAt(0, -1, 1)
-        self.camera.setPos(0, distance + 4, 5)
+        self.camera.lookAt(0, -1, -3)
+        self.camera.setPos(0, distance + 4, 10)
         base.camLens.setFov(FOV)
         return tarefa.cont
 
