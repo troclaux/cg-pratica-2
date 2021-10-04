@@ -55,9 +55,9 @@ class MeuApp(ShowBase):
         self.bob = self.loader.loadModel("bob190k_tex.obj")
         tex = loader.loadTexture('bob_diffuse.png')
         self.bob.setTexture(tex,1)
-        self.bob.setScale(1, 1, 1.5) # escalonamento X, Y, Z 
+        self.bob.setScale(1.5, 1.5, 2.25) # escalonamento X, Y, Z 
         self.bob.setHpr(180,0,0) # rotacao em volta de Z, X, Y
-        self.bob.setPos(0,3,0) # posicao (X,Y,Z)
+        self.bob.setPos(0,3.2,0) # posicao (X,Y,Z)
         self.bob.reparentTo(self.render)
  
         self.spot1 = self.loader.loadModel("spot190k_tex.obj")
@@ -78,7 +78,8 @@ class MeuApp(ShowBase):
 
         self.spot3 = self.loader.loadModel('spot190k_tex.obj')        
         tex = loader.loadTexture('spot_green.png')
-        self.spot3.setTexture(tex,1)
+        self.spot3.setScale(1.4, 1.4, 1.4)
+        self.spot3.setTexture(tex, 1)
         self.spot3.setPos(-2,-2,0)
         self.spot3.reparentTo(self.render)
 
@@ -86,9 +87,9 @@ class MeuApp(ShowBase):
         tex = loader.loadTexture('wood_table_texture.jpg')
         self.wood_table.setTexture(tex, 1)
         self.wood_table.setPos(0, 0.5, 0)
-        self.wood_table.reparentTo(self.render)
         self.wood_table.setHpr(0, 90, 90)
         self.wood_table.setScale(3, 3, 3)
+        self.wood_table.reparentTo(self.render)
 
         self.shovel = self.loader.loadModel("shovel.obj")
         tex = loader.loadTexture('shovel_texture.png')
@@ -96,7 +97,7 @@ class MeuApp(ShowBase):
         self.shovel.setPos(1, 0.5, 2)
         self.shovel.reparentTo(self.render)
         self.shovel.setHpr(0, 0, 0)
-        #self.shovel.setScale(2, 2, 3)  # escalonamento X, Y, Z
+        self.shovel.setScale(2.5, 2.5, 2.5)
 
         self.lamp_post = self.loader.loadModel("lamp_post.obj")
         tex = loader.loadTexture('lamp_post_texture.png')
@@ -104,7 +105,7 @@ class MeuApp(ShowBase):
         self.lamp_post.setPos(-3, 0.5, 0)
         self.lamp_post.reparentTo(self.render)
         self.lamp_post.setHpr(90, 90, 0)
-        self.lamp_post.setScale(0.5, 0.5, 0.5)  # escalonamento X, Y, Z
+        self.lamp_post.setScale(0.5, 0.5, 0.5)
 
     ##========== Método que define o movimento de camera ========== 
     def dollyZoomTask(self, tarefa):
