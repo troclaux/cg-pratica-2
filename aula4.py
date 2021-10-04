@@ -82,13 +82,13 @@ class MeuApp(ShowBase):
         self.spot3.setPos(-2,-2,0)
         self.spot3.reparentTo(self.render)
 
-        self.spot4 = self.loader.loadModel("carro.obj")
-        #tex = loader.loadTexture('spot_green.png')
-        self.spot4.setTexture(tex, 1)
-        self.spot4.setPos(0, 0.5, 0)
-        self.spot4.reparentTo(self.render)
-        self.spot4.setHpr(0, 90, 90)
-        #self.spot4.setScale(2, 2, 3)  # escalonamento X, Y, Z
+        self.chair = self.loader.loadModel("chair.obj")
+        tex = loader.loadTexture('chair_texture.png')
+        self.chair.setTexture(tex, 1)
+        self.chair.setPos(0, 0.5, 0)
+        self.chair.reparentTo(self.render)
+        self.chair.setHpr(0, 90, 90)
+        self.chair.setScale(3, 3, 3)
 
         self.shovel = self.loader.loadModel("shovel.obj")
         tex = loader.loadTexture('shovel_texture.png')
@@ -108,7 +108,10 @@ class MeuApp(ShowBase):
 
     ##========== Método que define o movimento de camera ========== 
     def dollyZoomTask(self, tarefa):
-        '''Imita a técnica de "dolly zoom". O método aumenta o ângulo de
+        '''O movimento da câmera nessa cena tem como objetivo dar o foco no bob e na bula de chá, além disso a posição inicial permite o espectador observar as sombras dos modelos. A câmera terá como posição inicial um ponto de vista top-down da cena, depois ela vai se aproximar do chão enquanto simultaneamente muda o FOV e vice versa.
+         A câmera vai percorrer esse percurso e alterar o FOV.
+
+        Imita a técnica de "dolly zoom". O método aumenta o ângulo de
         visão (FOV) de uma câmera enquando se aproxima com a câmera a um
         ponto da cena, e vice versa: diminui FOV enquanto se afasta de um
         ponto da cena. O método muda o FOV da câmero por ângulo 30 graus
@@ -125,7 +128,7 @@ class MeuApp(ShowBase):
         largura = 4
         #tarefa.time retorna o tempo que se passou em segundos, a funcao
         # math.cos é usada para criar um movimento periódico
-        FOV = 40 + 10 * math.sin(tarefa.time)
+        FOV = 40 + 20 * math.sin(math.pi * tarefa.time/2)
         distance = largura/(2*math.tan(0.5*FOV/180*math.pi))
         self.camera.lookAt(0, -1, -3)
         self.camera.setPos(0, distance + 2, 10)
