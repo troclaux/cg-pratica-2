@@ -82,13 +82,13 @@ class MeuApp(ShowBase):
         self.spot3.setPos(-2,-2,0)
         self.spot3.reparentTo(self.render)
 
-        self.chair = self.loader.loadModel("chair.obj")
-        tex = loader.loadTexture('chair_texture.png')
-        self.chair.setTexture(tex, 1)
-        self.chair.setPos(0, 0.5, 0)
-        self.chair.reparentTo(self.render)
-        self.chair.setHpr(0, 90, 90)
-        self.chair.setScale(3, 3, 3)
+        self.wood_table = self.loader.loadModel("wood_table.obj")
+        tex = loader.loadTexture('wood_table_texture.jpg')
+        self.wood_table.setTexture(tex, 1)
+        self.wood_table.setPos(0, 0.5, 0)
+        self.wood_table.reparentTo(self.render)
+        self.wood_table.setHpr(0, 90, 90)
+        self.wood_table.setScale(3, 3, 3)
 
         self.shovel = self.loader.loadModel("shovel.obj")
         tex = loader.loadTexture('shovel_texture.png')
@@ -108,26 +108,11 @@ class MeuApp(ShowBase):
 
     ##========== Método que define o movimento de camera ========== 
     def dollyZoomTask(self, tarefa):
-        '''O movimento da câmera nessa cena tem como objetivo dar o foco no bob e na bula de chá, além disso a posição inicial permite o espectador observar as sombras dos modelos. A câmera terá como posição inicial um ponto de vista top-down da cena, depois ela vai se aproximar do chão enquanto simultaneamente muda o FOV e vice versa.
-         A câmera vai percorrer esse percurso e alterar o FOV.
+        '''O movimento da câmera nessa cena tem como objetivo dar o foco no bob e na mesa, além disso a posição inicial permite que a câmera mostre as sombras dos modelos. A câmera começa com um ponto de vista top-down da cena e se aproxima do chão enquanto simultaneamente muda o FOV. Depois ela percorre o caminho inverso enquanto volta pro FOV original. A câmera vai continuar percorrendo esse trajeto repetidamente.'''
+        # math.sin é usada para criar um movimento periódico
+        #tarefa.time retorna o tempo que se passou em segundos, a funcao
 
-        Imita a técnica de "dolly zoom". O método aumenta o ângulo de
-        visão (FOV) de uma câmera enquando se aproxima com a câmera a um
-        ponto da cena, e vice versa: diminui FOV enquanto se afasta de um
-        ponto da cena. O método muda o FOV da câmero por ângulo 30 graus
-        cada 3 segundos.
         largura = 4
-        #tarefa.time retorna o tempo que se passou em segundos, a funcao
-        # math.cos é usada para criar um movimento periódico
-        FOV =  50 + 30.0*math.cos(math.pi*tarefa.time/6)
-        distance = largura/(2*math.tan(0.5*FOV/180*math.pi))        
-        self.camera.lookAt(0,-1,1)
-        self.camera.setPos(0, distance -1 , 0.75)
-        base.camLens.setFov(FOV)
-        return tarefa.cont'''
-        largura = 4
-        #tarefa.time retorna o tempo que se passou em segundos, a funcao
-        # math.cos é usada para criar um movimento periódico
         FOV = 40 + 20 * math.sin(math.pi * tarefa.time/2)
         distance = largura/(2*math.tan(0.5*FOV/180*math.pi))
         self.camera.lookAt(0, -1, -3)
